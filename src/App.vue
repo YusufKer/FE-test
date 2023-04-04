@@ -1,19 +1,21 @@
 <template>
-  <div id="app" class="bg-red-50 container m-auto p-4">
-    <Header />
+  <div id="app">
+    <Header/>
+      <div class="container m-auto">
+        <router-view/>
+      </div>
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
+  import Header from "./components/Header.vue"
+  import Footer from "./components/Footer.vue"
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    Footer
+  export default {
+    components: {
+      Footer,
+      Header
+    }
   }
-}
 </script>

@@ -1,5 +1,7 @@
 <template>
-    <div>I AM THE FOOTER</div>
+    <div class="bg-blue-100">
+        <div class="container m-auto">I AM THE FOOTER</div>
+    </div>
 </template>
 
 <script>
