@@ -4,7 +4,7 @@
       <div class="container m-auto">
         <router-view/>
       </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
