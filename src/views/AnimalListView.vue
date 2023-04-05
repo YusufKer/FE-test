@@ -17,6 +17,7 @@
         },
         data(){
             return {
+                // I've hard coded the data which would otherwise be comming from a database
                 animalList : [
                     {
                         id: 1,

@@ -36,6 +36,7 @@
             })
         },
         methods: {
+            // Adjust aspect ratio of images for each screen size
             adjustAspectRatio(){
                 console.log("adjusting")
                 if(!this.$refs.imageRef) return;
@@ -47,6 +48,7 @@
                 element.style.height = `${widthRef / heightRef * actualWidth}px`;
             },
             addToCart(){
+                // I've opted to save the cart in localstorage
                 const cart = JSON.parse(localStorage.getItem("MAW-cart")) || [];
                 const x = cart.find(object => object.id === this.animal.id);
                 const quantity = parseInt(this.$refs.quantityRef.value);
