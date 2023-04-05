@@ -11,14 +11,14 @@
                 <router-link to="/contact-us" class="text-[#C2CFFF]">Contact Us</router-link>
                 <router-link to="/Cart" class="text-[#C2CFFF]">Cart</router-link>
             </nav>
-            <nav @click="mobileMenuOpen = !mobileMenuOpen" :class="mobileMenuOpen ? 'grid' : 'hidden'" class="tablet:hidden absolute right-0 top-10 bg-yellow-100 w-max justify-center">
+            <nav @click="mobileMenuOpen = !mobileMenuOpen" :class="mobileMenuOpen ? 'grid' : 'hidden'" class="tablet:hidden absolute right-0 top-10 bg-[#C2CFFF] w-max justify-center">
                 <router-link to="/" class="px-4 pt-2 hover:bg-yellow-50">Home</router-link>
                 <router-link to="/about" class="px-4 hover:bg-yellow-50">About Us</router-link>
                 <router-link to="/animal-list" class="px-4 hover:bg-yellow-50">Animal List</router-link>
                 <router-link to="/contact-us" class="px-4 hover:bg-yellow-50">Contact Us</router-link>
                 <router-link to="/Cart" class="px-4 pb-2 hover:bg-yellow-50">Cart</router-link>   
             </nav>
-            <div @click="mobileMenuOpen = !mobileMenuOpen" class="tablet:hidden cursor-pointer"><BurgerMenu/></div>
+            <div @click="mobileMenuOpen = !mobileMenuOpen" class="tablet:hidden cursor-pointer"><BurgerMenu :open="mobileMenuOpen"/></div>
         </div>
     </div>
 </template>
