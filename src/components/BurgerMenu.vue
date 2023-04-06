@@ -10,7 +10,7 @@
     export default {
         name: "burgerMenu",
         props:{
-            open:{
+            open: {
                 type:Boolean,
                 default(){
                     return false;

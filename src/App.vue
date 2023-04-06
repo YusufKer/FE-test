@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-theme-neutral">
     <Header/>
-      <div class="container m-auto">
+      <div>
         <router-view/>
       </div>
     <!-- <Footer /> -->
