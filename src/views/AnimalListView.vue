@@ -24,7 +24,7 @@
                         id: 1,
                         name: "Naked Mole Rat",
                         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam vel, veritatis delectus ad, error quos",
-                        imageUrl:"https://www.akronzoo.org/sites/default/files/styles/uncropped_xl/public/2022-05/Naked-mole-rat-main.png?itok=aNfQb4Fz",
+                        imageUrl:"1-naked-mole-rat.png",
                         price: 1200.00
                     },
                     {

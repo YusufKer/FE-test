@@ -1,6 +1,6 @@
 <template>
     <div class="bg-theme-neutral shadow-lg rounded-md overflow-hidden">
-        <img ref="imageRef" data-width="3" data-height="4" :src="animal.imageUrl ?? dafaultImageUrl" alt="err" class="object-cover object-center w-full"/>
+        <img ref="imageRef" data-width="3" data-height="4" :src="imageSrc" alt="err" class="object-cover object-center w-full"/>
         <div class="item-info p-2 grid gap-2">
             <p class="text-h3 text-gray-900">{{ animal.name }}</p>
             <p class="text-p leading-none text-gray-900">{{ animal.description }}</p>
@@ -26,7 +26,8 @@
         },
         data(){
             return {
-                dafaultImageUrl: 'https://media.istockphoto.com/id/176430993/photo/rat.jpg?b=1&s=170667a&w=0&k=20&c=ATdPJjKaKDU-IMw1FSC_hVDf3kakS7PeiFzBtgUuwuk='
+                dafaultImageUrl: 'https://media.istockphoto.com/id/176430993/photo/rat.jpg?b=1&s=170667a&w=0&k=20&c=ATdPJjKaKDU-IMw1FSC_hVDf3kakS7PeiFzBtgUuwuk=',
+                imageSrc: require(`@/assets/animals/${this.animal.imageUrl}`)
             }
         },
         mounted(){
