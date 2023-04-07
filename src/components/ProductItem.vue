@@ -1,6 +1,6 @@
 <template>
     <div class="bg-theme-neutral shadow-lg rounded-md overflow-hidden">
-        <img ref="imageRef" data-width="3" data-height="4" :src="imageSrc" alt="err" class="object-cover object-center w-full"/>
+        <img ref="imageRef" :src="imageSrc" alt="err" class="object-cover object-center w-full aspect-[4/3]"/>
         <div class="item-info p-2 grid gap-2">
             <p class="text-h3 text-gray-900">{{ animal.name }}</p>
             <p class="text-p leading-none text-gray-900">{{ animal.description }}</p>
@@ -29,24 +29,7 @@
                 imageSrc: require(`@/assets/animals/${this.animal.imageUrl}`)
             }
         },
-        mounted(){
-            this.adjustAspectRatio();
-            window.addEventListener("resize", e =>{
-                this.adjustAspectRatio();
-            })
-        },
         methods: {
-            // Adjust aspect ratio of images for each screen size
-            adjustAspectRatio(){
-                console.log("adjusting")
-                if(!this.$refs.imageRef) return;
-                const element = this?.$refs?.imageRef;
-                element.style.height = `unset`;
-                const actualWidth = element.getBoundingClientRect().width;
-                const widthRef = parseInt(element.dataset.width);
-                const heightRef = parseInt(element.dataset.height);
-                element.style.height = `${widthRef / heightRef * actualWidth}px`;
-            },
             addToCart(){
                 const { animal } = this;
                 const quantity = parseInt(this.$refs.quantityRef.value);
