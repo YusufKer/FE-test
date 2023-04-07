@@ -26,7 +26,6 @@
         },
         data(){
             return {
-                dafaultImageUrl: 'https://media.istockphoto.com/id/176430993/photo/rat.jpg?b=1&s=170667a&w=0&k=20&c=ATdPJjKaKDU-IMw1FSC_hVDf3kakS7PeiFzBtgUuwuk=',
                 imageSrc: require(`@/assets/animals/${this.animal.imageUrl}`)
             }
         },
@@ -49,26 +48,9 @@
                 element.style.height = `${widthRef / heightRef * actualWidth}px`;
             },
             addToCart(){
-                // I've opted to save the cart in localstorage
-                const cart = JSON.parse(localStorage.getItem("MAW-cart")) || [];
-                const x = cart.find(object => object.id === this.animal.id);
+                const { animal } = this;
                 const quantity = parseInt(this.$refs.quantityRef.value);
-                if(x){
-                    x.quantity += quantity;
-                    const newCart = cart.filter(items => items.id !== x.id)
-                    newCart.push(x);
-                    newCart.sort((a,b) =>{
-                        return a.id - b.id;
-                    })
-                    localStorage.setItem("MAW-cart",JSON.stringify(newCart));
-                }else{
-                    cart.push({...this.animal,quantity});
-                    cart.sort((a,b) =>{
-                        return a.id - b.id;
-                    })
-                    localStorage.setItem("MAW-cart",JSON.stringify(cart));
-                }
-                alert("Item Added to Cart");
+                this.$store.dispatch("addItem", {animal,quantity});
             }
         }
     }

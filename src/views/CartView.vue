@@ -9,7 +9,7 @@
                 <div>quantity</div>
             </div>
             <!-- ITEMS -->
-            <div v-for="item in cart" :key="item.id" class="grid grid-cols-5 gap-4 even:bg-theme-neutral odd:bg-gray-100 px-1 py-2">
+            <div v-for="item in $store.state.cart" :key="item.id" class="grid grid-cols-5 gap-4 even:bg-theme-neutral odd:bg-gray-100 px-1 py-2">
                 <div class="col-span-2">{{ item.name }}</div>
                 <div>{{ item.price }}</div>
                 <div>{{ item.quantity }}</div>
@@ -19,9 +19,10 @@
             </div>
             <!-- TOTAL -->
             <div class="px-1 py-2 h-10 bg-theme-primary">
-                <div>TOTAL: <span class="font-bold">R{{ total }}</span></div>
+                <div>TOTAL: <span class="font-bold">R{{ $store.getters.totalPrice }}</span></div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -34,38 +35,10 @@
                 total: 0
             }
         },
-        mounted(){
-            const loadCart = JSON.parse(localStorage.getItem("MAW-cart")) || [];
-            this.cart = loadCart;
-            this.calculateTotal();
-        },
         methods:{
             removeItem(id){
-                const item = this.cart.find(item => item.id === id);
-                if(item.quantity === 1){
-                    const newCart = this.cart.filter(item => item.id !== id);
-                    newCart.sort((a,b) =>{
-                        return a.id - b.id;
-                    })
-                    this.cart = newCart;
-                    localStorage.setItem("MAW-cart",JSON.stringify(this.cart));
-                }else{
-                    item.quantity --;
-                    const newCart = this.cart.filter(item => item.id !== id);
-                    newCart.push(item);
-                    newCart.sort((a,b) =>{
-                        return a.id - b.id;
-                    })
-                    this.cart = newCart;
-                    localStorage.setItem("MAW-cart",JSON.stringify(this.cart));
-                }
-                this.calculateTotal();
+                this.$store.dispatch("removeItem", id);
             },
-            calculateTotal(){
-                this.total = this.cart.reduce((total, item) => {
-                    return total + (item.price * item.quantity);
-                },0);
-            }
         }
     }
 </script>
